@@ -17,7 +17,7 @@ CREATE TABLE answers (
   answerer_name   VARCHAR(128) DEFAULT 'Anonymous',
   answerer_email  VARCHAR(128) DEFAULT '',
   helpfulness     INTEGER DEFAULT 0,
-  reported        INTEGER DEFAULT 0,
+  reported        BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (answer_id)
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE questions (
   asker_name            VARCHAR(128) DEFAULT 'Anonymous',
   asker_email           VARCHAR(128) NOT NULL DEFAULT 'NULL',
   question_helpfulness  INTEGER DEFAULT 0,
-  reported              INTEGER DEFAULT 0,
+  reported              BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (question_id)
 );
 
