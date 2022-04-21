@@ -21,7 +21,7 @@ module.exports = function Answers(sequelize, DataTypes) {
     date: {
       type: DataTypes.STRING(32),
       allowNull: false,
-      defaultValue: 'CURRENT_TIMESTAMP',
+      defaultValue: new Date().getTime(),
     },
     answerer_name: {
       type: DataTypes.STRING(60),
