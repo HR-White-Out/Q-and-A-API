@@ -1,6 +1,4 @@
-const Sequelize = require('sequelize');
-
-module.exports = function (sequelize, DataTypes) {
+module.exports = function AnswerPhotos(sequelize, DataTypes) {
   return sequelize.define('answer_photos', {
     photo_id: {
       autoIncrement: true,

@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable no-underscore-dangle */
 const { DataTypes } = require('sequelize');
 const _answer_photos = require('./answer_photos');
 const _answers = require('./answers');

@@ -1,45 +1,44 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
+module.exports = function QuestionsModel(sequelize, DataTypes) {
   return sequelize.define('questions', {
     question_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     product_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
     question_body: {
       type: DataTypes.STRING(1000),
-      allowNull: false
+      allowNull: false,
     },
     question_date: {
       type: DataTypes.STRING(32),
       allowNull: false,
-      defaultValue: "CURRENT_TIMESTAMP"
+      defaultValue: 'CURRENT_TIMESTAMP',
     },
     asker_name: {
       type: DataTypes.STRING(60),
       allowNull: true,
-      defaultValue: "Anonymous"
+      defaultValue: 'Anonymous',
     },
     asker_email: {
       type: DataTypes.STRING(60),
       allowNull: false,
-      defaultValue: "NULL"
+      defaultValue: 'NULL',
     },
     question_helpfulness: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      defaultValue: 0
+      defaultValue: 0,
     },
     reported: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
-      defaultValue: false
-    }
+      defaultValue: false,
+    },
   }, {
     sequelize,
     tableName: 'questions',
@@ -47,12 +46,12 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: false,
     indexes: [
       {
-        name: "questions_pkey",
+        name: 'questions_pkey',
         unique: true,
         fields: [
-          { name: "question_id" },
-        ]
+          { name: 'question_id' },
+        ],
       },
-    ]
+    ],
   });
 };
