@@ -1,13 +1,5 @@
-const createError = require('http-errors');
 const { questions } = require('../models');
-
-// Error objects to handle problems gracefully:
-const ERR = {
-  MISSING_PRODUCT_ID: createError(400, 'No product_id specified'),
-  UNRECOGNIZED_PRODUCT_ID: createError(404, 'Unrecognized product_id.'),
-  MISSING_QUESTION_BODY: createError(400, 'No body specified.'),
-  BAD_REQUEST: createError(400, 'Bad request.'),
-};
+const ERR = require('./error');
 
 module.exports = {
   // ************************************** SERVES `GET /qa/questions` ENDPOINT:
@@ -39,7 +31,7 @@ module.exports = {
   // ************************************* SERVES `POST /qa/questions` ENDPOINT:
   addQuestion: (req, res, next) => {
     const {
-      body, name = 'Anonymous', email = 'test@test.com', product_id: productID,
+      body, name, email, product_id: productID,
     } = req?.body || {};
 
     if (!productID) return next(ERR.MISSING_PRODUCT_ID);
