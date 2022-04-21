@@ -58,12 +58,33 @@ module.exports = {
   },
 
   // ***************** SERVES `PUT /qa/questions/:question_id/helpful` ENDPOINT:
-  markHelpful: (params, req, res) => {
-    // do stuff
+  markHelpful: async (req, res, next) => {
+    const { question_id: questionID } = req?.params || {};
+
+    if (!questionID) return next(ERR.BAD_REQUEST);
+
+    try {
+      const question = await questions.findOne({ where: { question_id: questionID } });
+
+      question.question_helpfulness += 1;
+
+      await question.save();
+
+      return res.sendStatus(204);
+    } catch { return next(ERR.BAD_REQUEST); }
   },
 
   // ****************** SERVES `PUT /qa/questions/:question_id/report` ENDPOINT:
-  report: (params, req, res) => {
-    // do stuff
+  report: (req, res, next) => {
+    const { question_id: questionID } = req?.params || {};
+
+    if (!questionID) return next(ERR.BAD_REQUEST);
+
+    questions.update(
+      { reported: true },
+      { where: { question_id: questionID } },
+    )
+      .then(() => res.sendStatus(204))
+      .catch(() => next(ERR.BAD_REQUEST));
   },
 };
