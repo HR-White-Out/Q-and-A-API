@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
 const {
@@ -6,10 +6,11 @@ const {
 } = process.env;
 
 const sequelize = new Sequelize({
-  database: DB_NAME,
-  username: DB_USERNAME,
   host: DB_HOST,
   port: DB_PORT,
+  database: DB_NAME,
+  username: DB_USERNAME,
+  password: DB_PASSWORD || undefined,
   dialect: 'postgres',
 });
 
