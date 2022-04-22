@@ -46,6 +46,12 @@ module.exports = function QuestionsModel(sequelize, DataTypes) {
     timestamps: false,
     indexes: [
       {
+        name: 'product_id_idx',
+        fields: [
+          { name: 'product_id' },
+        ],
+      },
+      {
         name: 'questions_pkey',
         unique: true,
         fields: [

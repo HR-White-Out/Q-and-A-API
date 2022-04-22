@@ -25,6 +25,12 @@ module.exports = function AnswerPhotos(sequelize, DataTypes) {
     timestamps: false,
     indexes: [
       {
+        name: 'answer_id_idx',
+        fields: [
+          { name: 'answer_id' },
+        ],
+      },
+      {
         name: 'answer_photos_pkey',
         unique: true,
         fields: [

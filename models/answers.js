@@ -56,6 +56,12 @@ module.exports = function Answers(sequelize, DataTypes) {
           { name: 'answer_id' },
         ],
       },
+      {
+        name: 'question_id_idx',
+        fields: [
+          { name: 'question_id' },
+        ],
+      },
     ],
   });
 };
