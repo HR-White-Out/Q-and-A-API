@@ -62,6 +62,14 @@ ALTER TABLE answers ADD FOREIGN KEY (question_id) REFERENCES questions (question
 ALTER TABLE answer_photos ADD FOREIGN KEY (answer_id) REFERENCES answers (answer_id);
 
 -- ---
+-- Indices to facilitate faster lookup
+-- ---
+
+CREATE INDEX CONCURRENTLY product_id_idx ON questions USING HASH (product_id);
+CREATE INDEX CONCURRENTLY question_id_idx ON answers USING HASH (question_id);
+CREATE INDEX CONCURRENTLY answer_id_idx ON answer_photos USING HASH (answer_id);
+
+-- ---
 -- Starting values for new IDs
 -- ---
 
