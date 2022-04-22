@@ -1,6 +1,5 @@
 const express = require('express');
 const controller = require('./controllers');
-// const db = require('./db');
 
 const app = express();
 
@@ -21,7 +20,7 @@ app.post('/qa/questions/:question_id/answers', controller.answers.addAnswer);
 app.put('/qa/answers/:answer_id/helpful', controller.answers.markHelpful);
 app.put('/qa/answers/:answer_id/report', controller.answers.report);
 
-app.get('/', (req, res) => {
+app.get('/hello', (req, res) => {
   res.send('Hello World!');
 });
 
