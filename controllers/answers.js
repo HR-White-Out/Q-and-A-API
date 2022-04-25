@@ -30,8 +30,10 @@ module.exports = {
       .then((dbRes) => {
         res.json(
           dbRes
-            .map((el) => el.get())
-            .map((a) => ({ ...a, photos: a.photos.map((x) => x.photo_url) })),
+            .map((decoratedAnswer) => decoratedAnswer.get())
+            .map((answer) => (
+              { ...answer, photos: answer.photos.map((photo) => photo.photo_url) }
+            )),
         );
       })
       .catch(() => next(ERR.UNRECOGNIZED_QUESTION_ID));
